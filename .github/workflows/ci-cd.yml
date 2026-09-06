@@ -13,7 +13,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
-          uses: actions/checkout@v2
+          uses: actions/checkout@v4
         - name: Set up Python
           uses: actions/setup-python@v5
           with:
@@ -24,6 +24,20 @@ jobs:
           run: pytest
           env:
               PYTHONPATH: .
+    package:
+        needs: test
+        runs-on: ubuntu-latest
+
+        steps:
+              - name: Checkout code
+                uses: actions/checkout@v4
+              - name: create package
+                run: zip -r python-app.zip src tests requirements.txt
+              - name: Upload package
+                uses: actions/upload-artifact@v4
+                with:
+                  name: python-app
+                  path: python-app.zip
 
 
 
