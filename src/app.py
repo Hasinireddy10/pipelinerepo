@@ -6,3 +6,5 @@ def subtract(a,b):
 
 print(add(2,3))
 print(subtract(5,7))
+
+#ci cd automatic trigger test
